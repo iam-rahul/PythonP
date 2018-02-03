@@ -11,7 +11,7 @@ if spy_exist.upper() == "Y":
         spy_choice = input("\nPlease Select from Menu\n 1. Update Status\n 0. Exit\n")
         if spy_choice == 1:
             spy_status = raw_input("Enter Status Here ")
-            print "Your Status is\n" + spy_status
+            print "Your Status is \"%s\"" %(spy_status)
         elif spy_choice == 0:
             print "You are out from Menu"
             menu_choice = False
