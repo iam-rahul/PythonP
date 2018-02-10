@@ -1,4 +1,6 @@
-spy_name = "Ghost"
-spy_salutation = "Mr"
-spy_age = "27"
-spy_rating = "5.2"
+spy_friend = {
+    'name' : 'Ghost',
+    'salutation' : 'Mr',
+    'age' : 27,
+    'rating' : 2.7
+}
