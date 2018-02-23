@@ -5,12 +5,11 @@ from datetime import datetime
 from termcolor import colored
 import csv
 
-print "hi.."
-print "Welcome to the SpyChat"
-
+print "Hello!!!"
+print "Welcome to the World of Spy"
+print "Let's get Started..."
 
 def load_friends():
-
     with open('friend.csv', 'rU') as friends_data:
         reader = list(csv.reader(friends_data, dialect='excel'))
         for row in reader[1:]:
@@ -20,7 +19,6 @@ def load_friends():
                 rating = (row[2])
                 spy = Spy(name, age, rating)
                 friends.append(spy)
-#==========================================================================================================================================================================
 
 def Chatload_friends():
     with open('Chats.csv', 'rU') as chats_data:
@@ -33,20 +31,17 @@ def Chatload_friends():
                 time = row[4]
                 sent_by_me= row[4]
                 chatlist = [sender,message_sent_to,text,time,sent_by_me]
-#===========================================================================================================================================================================
+
 STATUS_MESSGAES = ['available', 'sleeping', 'playing']
 # creating a friends list
 load_friends()
 Chatload_friends()
 
-
 def add_status(current_status_message):  # Function created add_status
-
     if current_status_message != None:
         print "your current status message is " + current_status_message
     else:
         print "you don't have any status message currently"
-
     status = raw_input("Do you want to select from old status? Y or N: ")
     if len(status) >= 1:
         if status.upper() == 'Y':
@@ -61,7 +56,6 @@ def add_status(current_status_message):  # Function created add_status
             else:
                 print "invalid seletion"
             return new_status  # returning new_status if user want to update the old status
-
         elif status.upper() == 'N':
             new_status = raw_input("enter your new status")
             if len(new_status) > 1:
@@ -69,14 +63,11 @@ def add_status(current_status_message):  # Function created add_status
             else:
                 print "please enter something atleast"
             return new_status  # returning new_status if user doesn't want to update old status
-
         else:
             print "invalid entry"
     else:
         set_status = "No status"
         return set_status
-
-#=======================================================================================================================================================================
 
 def add_friend():  # declaration of add_friend function which is used to add friend
     new_friend = {
@@ -86,7 +77,6 @@ def add_friend():  # declaration of add_friend function which is used to add fri
         'ratings': 0.0,
         'online': True,
         'chats': []
-
     }
     valid_name = True
     valid_salutation = True
@@ -127,8 +117,6 @@ def add_friend():  # declaration of add_friend function which is used to add fri
             print "friend cannot be added "
     return len(friends)
 
-#=================================================================================================================================================================================
-
 def select_a_friend():                                                                                       # We are declaring a functon select_a_friend which is used to select a friend to send a message
     serial_no = 1
     for frnd in friends:
@@ -137,8 +125,6 @@ def select_a_friend():                                                          
     user_selected_frnd = input("select your frnd: ")
     user_index = user_selected_frnd - 1
     return user_index                                                                                         # we are returning a user_index above declare function which is used to select a friend to send a message
-
-#======================================================================================================================================================================================
 
 def send_message():  # declare a function send_message used to send a Encrypted message to friend using steagnography
     user_frnd_index = select_a_friend()
@@ -159,9 +145,6 @@ def send_message():  # declare a function send_message used to send a Encrypted 
         writer = csv.writer(chats_data)
         writer.writerow([new_chat['sender'], new_chat['message_sent_to'], new_chat['message'], new_chat['time'], new_chat['sent_by_me']])
 
-#===========================================================================================================================================================================================
-
-
 def read_message():                                                                  # declare a function read_message to read a encypted message send by the friend
     sender = select_a_friend()
     output_path = raw_input(colored("what is the name of the file u want to decode? ","red"))
@@ -171,7 +154,6 @@ def read_message():                                                             
     if 'SOS' in new_text or 'ALERT' in new_text or 'HELP' in new_text:
         print colored("I am fine,we will meet Tommorow","blue")
 
-#===========================================================================================================================================================================================
 def ReadChatload_friends(choice):
     name_friend = friends[choice].name
     with open('Chats.csv', 'rU') as chats_data:
@@ -184,13 +166,6 @@ def ReadChatload_friends(choice):
                         print  colored(row[2],"red")
                         print  colored(row[3],"blue")
 
-
-
-
-
-
-
-#=============================================================================================================================================================================================
 def start_spyChat(spy_name, spy_age, spy_rating):  # function define start_spyChat
     current_status_message = None
     show_menu = True
@@ -202,7 +177,6 @@ def start_spyChat(spy_name, spy_age, spy_rating):  # function define start_spyCh
          4. Read a message
          5. Show chat messages history
          0: Exit""")
-
         if (spy_menu_choice == 1):
             current_status_message = add_status(current_status_message)  # function call add_status and save it into the current status
             if len(current_status_message) >= 1:
@@ -229,18 +203,11 @@ def start_spyChat(spy_name, spy_age, spy_rating):  # function define start_spyCh
         else:
             print 'wroung choice'
 
-#=============================================================================================================================================================================================
-
 spy_exist = raw_input("Are you existing spy? Y or N ")  # we are asking user that he is existing user or not
-
 if (spy_exist.upper() == 'Y'):
     print 'we have already your details'
     start_spyChat(spy.name, spy.age, spy.rating)  # function call start_spyChat
-
-#===============================================================================================================================================================================================
-
 elif (spy_exist.upper() == 'N'):
-
     spy.name = raw_input("Enter your name ")
     if len(spy.name) >= 3:
         print "welcome" + spy.name + ", i like to know about you."
@@ -269,5 +236,3 @@ elif (spy_exist.upper() == 'N'):
         print "enter a 3 character name"
 else:
     print "invalid"
-
-#=============================================================================================================================================
