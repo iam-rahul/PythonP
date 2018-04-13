@@ -6,7 +6,7 @@ from termcolor import colored
 import csv
 
 print "Hello!!!"
-print "Welcome to the World of Spy"
+print "*****>>Welcome to the SpyChat<<*****"
 print "Let's get Started..."
 
 def load_friends():
@@ -14,7 +14,7 @@ def load_friends():
         reader = list(csv.reader(friends_data, dialect='excel'))
         for row in reader[1:]:
             if row:
-                name = row[0]
+                name = (row[0])
                 age = (row[1])
                 rating = (row[2])
                 spy = Spy(name, age, rating)
@@ -203,9 +203,9 @@ def start_spyChat(spy_name, spy_age, spy_rating):  # function define start_spyCh
         else:
             print 'wroung choice'
 
-spy_exist = raw_input("Are you existing spy? Y or N ")  # we are asking user that he is existing user or not
+spy_exist = raw_input("Are You an Existing Spy? (Y/N) ")  # we are asking user that he is existing user or not
 if (spy_exist.upper() == 'Y'):
-    print 'we have already your details'
+    print "We Already have Your Details"
     start_spyChat(spy.name, spy.age, spy.rating)  # function call start_spyChat
 elif (spy_exist.upper() == 'N'):
     spy.name = raw_input("Enter your name ")
